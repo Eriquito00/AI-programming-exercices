@@ -2,7 +2,7 @@ from classes.Character import Character
 
 class Combatant(Character):
     def __init__(self, name, level, health, strength):
-        super().__init__(name, level, health)
+        Character.__init__(self, name, level, health)
         self.strength = strength
 
     def action(self, objective: Character):

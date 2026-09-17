@@ -1,5 +1,5 @@
+from __future__ import annotations
 from abc import abstractmethod
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -8,20 +8,20 @@ if TYPE_CHECKING:
 class Character:
     def __init__(self, name, level, health):
         self.nom = name
-        self.nivell = level
-        self.salut = health
+        self.level = level
+        self.health = health
 
     def info(self):
-        return f"Nom: {self.nom}, Nivell: {self.nivell}, Salut: {self.salut}"
+        return f"Nom: {self.nom}, Nivell: {self.level}, Salut: {self.health}"
 
     def get_damage(self, damage):
-        self.salut -= damage
-        if self.salut < 0:
-            self.salut = 0
+        self.health -= damage
+        if self.health < 0:
+            self.health = 0
 
     @abstractmethod
     def action(self, objective: Enemy):
         pass
 
     def is_alive(self):
-        return self.salut > 0
+        return self.health > 0

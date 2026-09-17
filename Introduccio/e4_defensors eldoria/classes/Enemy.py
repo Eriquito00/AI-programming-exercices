@@ -1,3 +1,4 @@
+from __future__ import annotations
 import random as rd
 
 from typing import TYPE_CHECKING
@@ -22,5 +23,5 @@ class Enemy:
             self.health = 0
 
     def phisical_attack(self, objective: Character):
-        damage = rd.randomint(15,35)
+        damage = rd.randint(15,35)
         objective.get_damage(damage)

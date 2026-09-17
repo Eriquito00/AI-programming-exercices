@@ -11,11 +11,12 @@ david = Palladium("David", 1, 110, 18, 12)
 sergi = Sorcerer("Sergi", 1, 80, 40)
 
 heroes: list[Character] = [oleguer, david, sergi]
-enemy = Enemy("Black Knight", 250)
+enemy = Enemy("Black Knight", 750)
 
 turn = 1
 
 while enemy.is_alive() and any(h.is_alive() for h in heroes):
+    print(f"\n==========================\n[ Torn {turn} ]")
     for h in heroes:
         if h.is_alive() and enemy.is_alive():
             h.action(enemy)
@@ -28,9 +29,10 @@ while enemy.is_alive() and any(h.is_alive() for h in heroes):
             enemy.phisical_attack(objective)
 
     print("\n[Estat després del torn]")
-    enemy.info()
+    print(enemy.info())
+    print("\n==========================")
     for heroi in heroes:
-        heroi.info()
+        print(heroi.info())
 
     turn += 1
 
