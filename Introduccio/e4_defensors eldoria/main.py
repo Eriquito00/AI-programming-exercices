@@ -1,4 +1,5 @@
 import random as rd
+import time as t
 
 from classes.Character import Character
 from classes.Barbarian import Barbarian
@@ -13,7 +14,15 @@ sergi = Sorcerer("Sergi", 1, 80, 40)
 heroes: list[Character] = [oleguer, david, sergi]
 enemy = Enemy("Black Knight", 750)
 
+def print_info():
+    print(enemy.info())
+    print("\n==========================")
+    for heroi in heroes:
+        print(heroi.info())
+
 turn = 1
+
+print_info()
 
 while enemy.is_alive() and any(h.is_alive() for h in heroes):
     print(f"\n==========================\n[ Torn {turn} ]")
@@ -29,12 +38,11 @@ while enemy.is_alive() and any(h.is_alive() for h in heroes):
             enemy.phisical_attack(objective)
 
     print("\n[Estat després del torn]")
-    print(enemy.info())
-    print("\n==========================")
-    for heroi in heroes:
-        print(heroi.info())
+    print_info()
 
     turn += 1
+
+    t.sleep(1)
 
 print("\n==========================")
 if enemy.is_alive():
